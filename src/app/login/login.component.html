@@ -1,0 +1,22 @@
+
+
+<!-- {{>Message}} -->
+<div id="contenedor">
+
+    <div id="central">
+        <div id="login">
+            <div class="titulo">
+               <b>Bienvenido</b> 
+            </div>
+            <form #frmLogin="ngForm" >
+              <input  name='username' type="text"  placeholder="username" required/>
+              <input  type="password" name="password" placeholder="password" required/>
+              <button class="state" (click)="onLogin()">Ingresar</button>
+            </form>
+            <div class="pie-form">
+                <a href="#">¿Perdiste tu contraseña?</a>
+            </div>
+        </div>
+    </div>
+  </div>
+  
