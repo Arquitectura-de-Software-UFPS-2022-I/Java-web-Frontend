@@ -2,22 +2,40 @@ import { UsuarioService } from './../Services/usuario.service';
 import { User } from '../Modelos/User';
 import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
+import  {  SweetAlert2Module  }  from  '@sweetalert2/ngx-sweetalert2' ;
+import { NgModule } from '@angular/core';
+import { CargarScriptsService } from "../cargar-scripts.service";
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
+
 export class DashboardComponent implements OnInit {
+
+  public saveFile(fileName: string): void {
+    // ... save file
+  }
+
+  public handleDenial(): void {
+      // ... don't save file and quit
+  }
+
+  public handleDismiss(dismissMethod: string): void {
+    // dismissMethod can be 'cancel', 'overlay', 'close', and 'timer'
+    // ... do something
+  }
+
+
 user = new User();
 ListarUser: User[]=[];
 
-
-
-
-  constructor(private UsuarioService: UsuarioService) {
-
-   }
+  constructor(private UsuarioService: UsuarioService, private _CargaScripts: CargarScriptsService) {
+    _CargaScripts.Carga(["main3"]);
+  }
    listarUser(){
     this.UsuarioService.getUsuario().subscribe((data: any) => {
       this.ListarUser = data;
@@ -80,11 +98,12 @@ ListarUser: User[]=[];
 
       seq2 = 0;
   };
+
+
+
+  
   ngOnInit() {
     this.listarUser();
-
-
-
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
       const dataDailySalesChart: any = {
@@ -164,9 +183,43 @@ ListarUser: User[]=[];
 
       //start animation for the Emails Subscription Chart
       this.startAnimationForBarChart(websiteViewsChart);
-
       
   }
 
+  alerta1(){
+    Swal.fire(    {
+      title: '¿Estas seguro de firmar?',
+      text: "Ten cuidado los documentos que firmas!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Seguro!',
+      cancelButtonText: 'Cancelar',
+      reverseButtons: true
+    } ).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Documento Firmado!',
+          'fue exitoso el proceso.',
+          'success'
+        )
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        Swal.fire(
+          'Cancelado',
+          ':)',
+          'error'
+        )
+      }
+    })
+  }
+  alerta2(){
+    Swal.fire(    'Alerta!',  'Alerta!',  'success'    );
+  }
+  alerta3(){
+    Swal.fire(    'Alerta!',  'Alerta!',  'warning'    );
+  }
+  
     
 }

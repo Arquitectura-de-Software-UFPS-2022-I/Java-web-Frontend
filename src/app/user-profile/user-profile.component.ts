@@ -1,6 +1,11 @@
+import { Firma } from './../Modelos/Firma';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'app/Modelos/User';
+import { File} from 'app/Modelos/Files';
 import SignaturePad from 'signature_pad';
+import { CargarScriptsService } from "../cargar-scripts.service";
+import { UsuarioService } from 'app/Services/usuario.service';
 declare var $: any;
 @Component({
   selector: 'app-user-profile',
@@ -8,6 +13,8 @@ declare var $: any;
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit, AfterViewInit {
+
+  user: User = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')!) : new User();
 
   @ViewChild('firmaDigital', {static: true}) signaturePadElement: any;
   signaturePad: any;
@@ -63,17 +70,26 @@ export class UserProfileComponent implements OnInit, AfterViewInit {
   
     }
   }
-  
-  constructor(private router: Router) {
+
+  constructor(private router: Router, private _CargaScripts: CargarScriptsService, private file:UsuarioService) {
+    _CargaScripts.Carga(["main2"]);
  
   }
+
   
   ngAfterViewInit():void {
     this.signaturePad= new SignaturePad(this.signaturePadElement.nativeElement);
   }
-  
+  img: Firma = localStorage.getItem('img') ? JSON.parse(localStorage.getItem('img')!) : new File();
+
+
   ngOnInit(){
-    
+    this.file.getSignatureUser("5").subscribe((res) => {
+      localStorage.setItem("img", JSON.stringify(res));
+    });
+   
+    console.log(this.img);
+ 
   }
     title = 'firmaDigital';
 

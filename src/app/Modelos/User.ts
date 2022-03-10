@@ -1,9 +1,8 @@
 export class User {
   id?: string;
-  created_at?: Date;
-  email?: string;
-  name?: string;
-  password?: string;
-  rol?:string;
+  full_name?: string;
   username?: string;
+  email?: string;
+  password?: string;
+  signature?:string;
 }

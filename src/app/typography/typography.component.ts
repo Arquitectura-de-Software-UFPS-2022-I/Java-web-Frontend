@@ -1,7 +1,12 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import SignaturePad from 'signature_pad';
+import { CargarScriptsService } from "../cargar-scripts.service";
+
 declare var $: any;
+export interface Emails{
+  name: string;
+}
 @Component({
   selector: 'app-typography',
   templateUrl: './typography.component.html',
@@ -73,8 +78,8 @@ guardarPNG(){
 
 
 
-constructor(private router: Router) {
-
+constructor(private router: Router, private _CargaScripts: CargarScriptsService) {
+  _CargaScripts.Carga(["main"]);
 }
 
 ngAfterViewInit():void {

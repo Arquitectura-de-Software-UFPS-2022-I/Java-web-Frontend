@@ -10,6 +10,8 @@ import {urlUser } from "../../environments/environment";
 })
 export class UsuarioService {
   private url = `${urlUser}/user`;
+  private url2 = `${urlUser}/file`;
+
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -21,6 +23,11 @@ export class UsuarioService {
   //get un User
   getUser(id: string): Observable<any> {
     return this.http.get<any>(this.url + "/" + id);
+  }
+
+  //get un User
+  getSignatureUser(id: string): Observable<any> {
+    return this.http.get<any>(this.url2 + "/user/" + id);
   }
 
   //agregar un User

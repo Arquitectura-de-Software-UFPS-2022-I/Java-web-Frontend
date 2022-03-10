@@ -1,22 +1,25 @@
-
-
-<!-- {{>Message}} -->
 <div id="contenedor">
-
     <div id="central">
         <div id="login">
             <div class="titulo">
-               <b>Bienvenido</b> 
+                <b>Bienvenido!</b>
             </div>
-            <form #frmLogin="ngForm" >
-              <input  name='username' type="text"  placeholder="username" required/>
-              <input  type="password" name="password" placeholder="password" required/>
-              <button class="state" (click)="onLogin()">Ingresar</button>
+            <form (submit)="signIn()" >
+                <div class="form-group">
+                    <label for="username">username</label>
+                    <input [(ngModel)]="User.username" name="username" id="username" type="text" class="form-control form-control-alternative" placeholder="username">
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input [(ngModel)]="User.password" name="password" id="password" type="password"  class="form-control form-control-alternative" placeholder="********">
+                  </div>
+                <!-- <input class="fa fa-user" name='username' type="text" placeholder="username" required /> -->
+                <!-- <input type="password" name="password" placeholder="password" class="fa fa-key" required /> -->
+                <button class="state">Ingresar</button>
             </form>
             <div class="pie-form">
-                <a href="#">¿Perdiste tu contraseña?</a>
+                <a routerLink="/register"><b>Registrarte!</b></a>
             </div>
         </div>
     </div>
-  </div>
-  
+</div>

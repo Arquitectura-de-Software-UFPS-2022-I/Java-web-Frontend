@@ -14,22 +14,21 @@
                                             <tr>
                                                 <th scope="col">Id</th>
                                                 <th scope="col">Username</th>
-                                                <th scope="col">Email</th>
                                                 <th scope="col">Nombre</th>
+                                                <th scope="col">Email</th>
                                                 <th scope="col">Contraseña</th>
-                                                <th scope="col">Fecha</th>
-                                                <th scope="col">Rol</th>
+                                                <th scope="col">Firma</th>
+                                               
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr *ngFor="let user of ListarUser">
                                                 <th>{{user.id}}</th>
                                                 <td>{{user.username}}</td>
+                                                <td>{{user.full_name}}</td>
                                                 <td>{{user.email}}</td>
-                                                <td>{{user.name}}</td>
                                                 <td>{{user.password}}</td>
-                                                <td>{{user.created_at}}</td>
-                                                <td>{{user.rol}}</td>
+                                                <td>{{user.signature}}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -59,7 +58,7 @@
                                                 Remitente
                                             </th>
                                             <th>
-                                                Fecha
+                                                Fecha de Petición
                                             </th>
                                             <th>
                                                 Documento
@@ -83,13 +82,13 @@
                                                     23-05-2022
                                                 </td>
                                                 <td>
-                                                    Oud-Turnhout.pdf
+                                                    <a href="#">Oud-Turnhout.pdf</a>   
                                                 </td>
                                                 <td class="text-primary">
                                                     Pendiente
                                                 </td>
                                                 <td>
-                                                    <button class="btn btn-primary">Firmar</button>
+                                                    <button (click)="alerta1();" class="btn btn-primary">Firmar</button>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -103,13 +102,14 @@
                                                     05-12-2022
                                                 </td>
                                                 <td>
-                                                    Sinaai-Waas.pdf
+                                                    <a href="#">Sinaai-Waas.pdf</a> 
+                                                   
                                                 </td>
                                                 <td class="text-primary">
                                                     Pendiente
                                                 </td>
                                                 <td>
-                                                    <button class="btn btn-primary">Firmar</button>
+                                                    <button (click)="alerta1();" class="btn btn-primary">Firmar</button>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -123,13 +123,14 @@
                                                     13-03-2021
                                                 </td>
                                                 <td>
-                                                    Baileux.pdf
+                                                    <a href="#">Baileux.pdf</a>
+                                                   
                                                 </td>
                                                 <td class="text-primary">
                                                     Pendiente
                                                 </td>
                                                 <td>
-                                                    <button class="btn btn-primary">Firmar</button>
+                                                    <button (click)="alerta1();" class="btn btn-primary">Firmar</button>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -143,13 +144,13 @@
                                                     18-06-2022
                                                 </td>
                                                 <td>
-                                                    Overland Park.pdf
+                                                    <a href="#">Overland Park.pdf</a>
                                                 </td>
                                                 <td class="text-primary">
                                                     Pendiente
                                                 </td>
                                                 <td>
-                                                    <button class="btn btn-primary">Firmar</button>
+                                                    <button (click)="alerta1();" class="btn btn-primary">Firmar</button>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -163,13 +164,14 @@
                                                     07-10-2022
                                                 </td>
                                                 <td>
-                                                    Feldkirchen in Kärnten.pdf
+                                                    <a href="#">Feldkirchen in Kärnten.pdf</a>
+                                                    
                                                 </td>
                                                 <td class="text-primary">
                                                     Pendiente
                                                 </td>
                                                 <td>
-                                                    <button class="btn btn-primary">Firmar</button>
+                                                    <button (click)="alerta1();" class="btn btn-primary">Firmar</button>
                                                 </td>
                                             </tr>
                                         </tbody>
