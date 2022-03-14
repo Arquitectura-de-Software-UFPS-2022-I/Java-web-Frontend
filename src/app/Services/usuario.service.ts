@@ -27,7 +27,7 @@ export class UsuarioService {
 
   //get un User
   getSignatureUser(id: string): Observable<any> {
-    return this.http.get<any>(this.url2 + "/user/" + id);
+    return this.http.get<any>(this.url2 + "/id/" + id);
   }
 
   //agregar un User

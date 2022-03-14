@@ -8,6 +8,7 @@ import { FormControl } from "@angular/forms";
 import { Observable } from "rxjs";
 import { User } from "app/Modelos/User";
 import { UserAuthService } from "app/Services/user-auth.service";
+import Swal from "sweetalert2";
 declare var $: any;
 @Component({
   selector: "register",
@@ -30,6 +31,13 @@ export class RegisterComponent implements OnInit {
 
   signUp() {
     this.authService.register(this.user).subscribe((res) => {
+      Swal.fire("Register Success!", "Registrado correctamente, ya puedes iniciar sesión", "success");
+      this.router.navigate(['/login']);
+    });
+  }
+  signUpFirma() {
+    this.authService.register(this.user).subscribe((res) => {
+      Swal.fire("Register Success!", "Registrado correctamente, ya puedes iniciar sesión", "success");
       this.router.navigate(['/login']);
     });
   }
@@ -37,7 +45,6 @@ export class RegisterComponent implements OnInit {
 
   showNotification(from, align) {
     const type = ["", "info", "success", "warning", "danger"];
-
     const color = Math.floor(Math.random() * 4 + 1);
 
     $.notify(

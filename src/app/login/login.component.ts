@@ -20,9 +20,14 @@ export class LoginComponent implements OnInit {
     console.log(this.User.username + "------" + this.User.password);
     this.authService.signIn(this.User).subscribe((res) => {
       localStorage.setItem("user", JSON.stringify(res));
-      
-      Swal.fire("Login Success!", "inicio de sesión correctamente!", "success");
-      this.router.navigate(["/dashboard"]);
+      if (res != null ) {
+        Swal.fire("Login Success!", "inicio de sesión correctamente!", "success");
+        this.router.navigate(['/dashboard']);
+       
+      } else{
+        Swal.fire("Login Error!", "credenciales incorrectas!", "warning");
+        this.router.navigate(['/login']);
+      }
     });
   }
 

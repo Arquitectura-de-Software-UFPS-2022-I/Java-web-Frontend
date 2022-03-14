@@ -28,8 +28,8 @@ export class UserAuthService {
     return this.http.post<User>(`${this.URL}/save`, user, { headers: this.headers });
   }
 
-  update(customer: User): Observable<User> {
-    return this.http.put<User>(`${this.URL}/${customer.id}`, customer, { headers: this.headers });
+  update(user: User): Observable<User> {
+    return this.http.put<User>(`${this.URL}/${user.id}`, user, { headers: this.headers });
   }
 
   delete(id: number): Observable<User> {

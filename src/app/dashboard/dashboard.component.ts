@@ -34,7 +34,7 @@ user = new User();
 ListarUser: User[]=[];
 
   constructor(private UsuarioService: UsuarioService, private _CargaScripts: CargarScriptsService) {
-    _CargaScripts.Carga(["main3"]);
+    //_CargaScripts.Carga(["main3"]);
   }
    listarUser(){
     this.UsuarioService.getUsuario().subscribe((data: any) => {
